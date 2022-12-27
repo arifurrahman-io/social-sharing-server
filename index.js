@@ -51,6 +51,12 @@ async function run() {
             res.status(403).send({ assessToken: '' });
         })
 
+        app.get('/posts', async (req, res) => {
+            const query = {};
+            const posts = await postCollection.find(query).toArray();
+            res.send(posts);
+        })
+
 
 
         app.post('/users', async (req, res) => {
