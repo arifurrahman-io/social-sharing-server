@@ -57,6 +57,13 @@ async function run() {
             res.send(posts);
         })
 
+        app.get('/postdetails/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) }
+            const result = await postCollection.findOne(query);
+            res.send(result);
+        })
+
 
 
         app.post('/users', async (req, res) => {
